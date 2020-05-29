@@ -12,7 +12,7 @@ Requires Python >= 3.5 (download here is you don't have it: https://www.python.o
 
 You are welcome to setup and run this project however you'd like. I use PyCharm frequently on my larger Python projects, so that is my IDE of choice these days. If you haven't used PyCharm before, it's worth a look. You can get the professional version for free with an .edu domain email address, apply here: https://www.jetbrains.com/community/education/#students
 
-To get setup in PyCharm, first download the project files from GitLab, then you can simply create a new project and add the downloaded files to that project. You may need to play around with the PyCharm preferences to ensure you're interpreter is setup correctly and you're running the project in Python >= 3.5
+To get setup in PyCharm, first download the project files from GitLab, then you can simply create a new project and add the downloaded files to that project, placing the `database.json` file in the same directory as the Python script. You may need to play around with the PyCharm preferences to ensure you're interpreter is setup correctly and you're running the project in Python >= 3.5
 
 
 If setting up the project via the command line, you (likely) will want to use a virtual environment, in which case...
@@ -60,7 +60,7 @@ environment set up.
 
 ## Running the application
 
-Run `authentication.py` from your IDE, or from the command line (whichever of the following runs the script in Python 3.5+ in your operating system):
+With the `database.json` file in the same directory as `authentication.py`, run `authentication.py` from your IDE, or from the command line (whichever of the following runs the script in Python 3.5+ in your operating system):
 
     python authentication.py
 or
