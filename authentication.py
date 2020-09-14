@@ -5,6 +5,7 @@ CS166 - Cybersecurity Principles
 """
 
 import json
+import sys
 
 # Set maximum number of attempts to login
 MAX_ATTEMPTS = 3
@@ -20,7 +21,6 @@ def menu():
     Route to selected function.
     """
     option = display_welcome_screen()
-
     if option == 1:
         authenticate()
     elif option == 2:
@@ -35,11 +35,8 @@ def display_welcome_screen() -> int:
 
     :return: choice: int
     """
-    print("\n")
-    print("********************")
-    print("Secure System Access")
-    print("********************\n")
-
+    border = "\n" + "*" * 20 + "\n"
+    print(border + "Secure System Access" + border)
     print("Please select from the following options: \n")
     print("\t1. Login")
     print("\t2. New User Account")
@@ -63,11 +60,8 @@ def authenticate():
     matches for a given user. The user is permitted 3 attempts to correctly enter
     their password.
     """
-    print("\n"
-          "**********\n"
-          "Login Menu\n"
-          "**********\n"
-          )
+    border = "\n" + "*" * 10 + "\n"
+    print(border + "Login Menu" + border)
 
     # Initialize values
     password_match = False
@@ -97,7 +91,7 @@ def authenticate():
             if attempts == MAX_ATTEMPTS:
                 print(f"\tThat was {MAX_ATTEMPTS} invalid attempts.")
                 print("\t** You are locked out of the system. **\n")
-                exit()
+                sys.exit()
 
 
 def database(un, pw) -> bool:
@@ -121,19 +115,16 @@ def database(un, pw) -> bool:
         return False
     except IOError:
         print("Error reading file. Aborting...")
-        exit()
+        sys.exit()
     except json.decoder.JSONDecodeError:
         print("Error reading file. Aborting...")
-        exit()
+        sys.exit()
 
 
 def new_user():
     """ Register new user """
-    print("\n"
-          "*************\n"
-          "New User Menu\n"
-          "*************\n"
-          )
+    border = "\n" + "*" * 13 + "\n"
+    print(border + "New User Menu" + border)
 
     try:
         with open("database.json", "r") as f:
@@ -159,10 +150,10 @@ def new_user():
         menu()
     except IOError:
         print("Error reading file. Aborting...")
-        exit()
+        sys.exit()
     except json.decoder.JSONDecodeError:
         print("Error reading file. Aborting...")
-        exit()
+        sys.exit()
 
 
 def password_strength(test_password) -> bool:
@@ -212,7 +203,7 @@ def program_exit():
         quit_choice = input(">>> ")
     if quit_choice.lower() == "y":
         print("\nThank you for using the top secret system.")
-        exit()
+        sys.exit()
     else:
         menu()
 
