@@ -66,7 +66,55 @@ class TestDatabase(unittest.TestCase):
 
 
 class TestPasswordStrength(unittest.TestCase):
-    def test_something(self):
+    def test_minimum_length(self):
+        """Create a password that satisfies all requirements except min length, then append a character to make it
+        the min length. Make sure both conform with the password min length constant, and then run the password
+        verifier to make sure it is correct.
+        """
+        too_short_password = 'Msh#2jd'
+        correct_password = too_short_password + '4'
+        assert len(too_short_password) < auth.PASSWORD_MIN_LENGTH
+        assert len(correct_password) >= auth.PASSWORD_MIN_LENGTH
+        self.assertFalse(auth.password_strength(too_short_password))
+        self.assertTrue(auth.password_strength(correct_password))
+
+    def test_maximum_length(self):
+        """Create a password that satisfies all requirements except max length, then strip a character to make it
+        the max length. Make sure both conform with the password max length constant, and then run the password
+        verifier to make sure it is correct.
+        """
+        too_long_password = 'sNb#N0lnXPB8kl8nWpX9uV9ZF8NEkBg3DxRRXg3vSae2vnafXUX'
+        correct_password = too_long_password[:len(too_long_password) - 1]
+        assert len(too_long_password) > auth.PASSWORD_MAX_LENGTH
+        assert len(correct_password) <= auth.PASSWORD_MAX_LENGTH
+        self.assertFalse(auth.password_strength(too_long_password))
+        self.assertTrue(auth.password_strength(correct_password))
+
+    def test_contains_more_than_letters(self):
+        """Create a password with only lower and uppercase letters and verify that it doesn't authenticate, then
+        append special characters and numbers and verify it authenticates.
+        """
+        only_letters_password = 'jkljiofasSDFASDf'
+        correct_password = only_letters_password + '3@'
+        self.assertFalse(auth.password_strength(only_letters_password))
+        self.assertTrue(auth.password_strength(correct_password))
+
+    def test_contains_more_than_digits(self):
+        """Create a password with only numbers and verify that it doesn't authenticate, then
+        append special characters and upper and lowercase letters and verify it authenticates.
+        """
+        only_numbers_password = '1234123412'
+        correct_password = only_numbers_password + 'adDs$'
+        self.assertFalse(auth.password_strength(only_numbers_password))
+        self.assertTrue(auth.password_strength(correct_password))
+
+    def test_at_least_one_uppercase(self):
+        pass
+
+    def test_at_least_one_lowercase(self):
+        pass
+
+    def test_basic_password_validation(self):
         pass
 
 
