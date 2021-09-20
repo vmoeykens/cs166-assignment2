@@ -109,7 +109,8 @@ class TestPasswordStrength(unittest.TestCase):
         self.assertTrue(auth.password_strength(correct_password))
 
     def test_at_least_one_uppercase(self):
-        pass
+        """Create a password with all requirements except uppercase letters and verify that it doesn't authenticate,
+        then construct """
 
     def test_at_least_one_lowercase(self):
         pass
