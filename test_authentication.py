@@ -110,13 +110,24 @@ class TestPasswordStrength(unittest.TestCase):
 
     def test_at_least_one_uppercase(self):
         """Create a password with all requirements except uppercase letters and verify that it doesn't authenticate,
-        then construct """
+        then construct a password with the rest of the requirements appended and verify it authenticates."""
+        all_but_uppercase_password = 'asafs32$@'
+        correct_password = all_but_uppercase_password + 'D'
+        self.assertFalse(auth.password_strength(all_but_uppercase_password))
+        self.assertTrue(auth.password_strength(correct_password))
 
     def test_at_least_one_lowercase(self):
-        pass
+        """Create a password with all requirements except lowercase letters and verify that it doesn't authenticate,
+        then construct a password with the rest of the requirements appended and verify it authenticates."""
+        all_but_lowercase_password = 'DSFESD32$@'
+        correct_password = all_but_lowercase_password + 'd'
+        self.assertFalse(auth.password_strength(all_but_lowercase_password))
+        self.assertTrue(auth.password_strength(correct_password))
 
     def test_basic_password_validation(self):
-        pass
+        """Create a password that satisfies all criteria and verify it authenticates."""
+        correct_password = 'asdfASD32$asd'
+        self.assertTrue(auth.password_strength(correct_password))
 
 
 if __name__ == '__main__':
