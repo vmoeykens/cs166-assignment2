@@ -7,11 +7,11 @@ import authentication as auth
 JSON_USER_FILE = 'database.json'
 
 FAKE_USERNAME_LIST = ['kbradbury0', 'dthewys1', 'bniccols2', 'dcrocumbe3', 'mcorteney4', 'kmoar5', 'ldepinna6',
-                 'gmessent7', 'kludwig8', 'aguillford9', 'fcicchinellia', 'rrubinowiczb', 'rmatyushkinc',
-                 'bjanssond', 'omillione', 'nfeaksf']
+                      'gmessent7', 'kludwig8', 'aguillford9', 'fcicchinellia', 'rrubinowiczb', 'rmatyushkinc',
+                      'bjanssond', 'omillione', 'nfeaksf']
 FAKE_PASSWORD_LIST = ['CKC8qfN', 'eQFY7JqCshZj', '0prECH', 'GrKjjtoF8GTp', 'Cfznf07', 'BCUjjO', 'paaVkz6Xr',
-                 '4lOAsm8Ws', 'H8Dkd8An4Sll', 'BWHWaSpZ', '4cNRS2wu3Gn', 'EVAcXGrVd5Y', 'B1V61B', 'VkDs1S2kNgL',
-                 'okfZ4okFX9b', '5dEHRiwZ3XV']
+                      '4lOAsm8Ws', 'H8Dkd8An4Sll', 'BWHWaSpZ', '4cNRS2wu3Gn', 'EVAcXGrVd5Y', 'B1V61B', 'VkDs1S2kNgL',
+                      'okfZ4okFX9b', '5dEHRiwZ3XV']
 
 
 def get_user_credentials():
